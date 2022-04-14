@@ -29,7 +29,7 @@ function App() {
     const shuffleAnswer = data => {
         return data.sort((a, b) => 0.5 - Math.random());
     }
-    
+
     React.useEffect(() => {
         fetch(`https://opentdb.com/api.php?amount=5&category=${startQuiz.category}&difficulty=${startQuiz.difficulty}&type=multiple`)
             .then(res => res.json())
@@ -61,7 +61,7 @@ function App() {
                     isCorrect: false
                 }])
             }))));
-    }, [startQuiz])
+    }, [startQuiz.difficulty, startQuiz.category])
 
     const handleStartQuiz = () => {
 
@@ -180,9 +180,9 @@ function App() {
                 :
                 <div>
                 <h1 className="title">Quizzical</h1>
-                <p className="description">A fun quiz game to test your knowledge.</p>
+                <p className="description">Test your knowledge in a fun quiz game.</p>
                 {
-                    startQuiz.errorMsg && <p className="error-msg">Please select the required fields</p>
+                    startQuiz.errorMsg && <p className="error-msg">Please select the required fields.</p>
                 }
                 <div className="settings-container" >
                     <select 
