@@ -3,7 +3,7 @@ import './App.css';
 import React from "react"
 import Question from "./component/Question"
 import {nanoid} from "nanoid"
-// import Confetti from "react-confetti"
+import Confetti from "react-confetti"
 
 function App() {
 
@@ -31,6 +31,7 @@ function App() {
     }
 
     React.useEffect(() => {
+        document.title = 'Quizzical | Trivia App';
         fetch(`https://opentdb.com/api.php?amount=5&category=${startQuiz.category}&difficulty=${startQuiz.difficulty}&type=multiple`)
             .then(res => res.json())
             .then(data => setQuiz(data.results.map(arr => ({
@@ -156,7 +157,7 @@ function App() {
     
     return (
         <main>
-            {/* {checkAnswers.correctAnswers === 5 && <Confetti />} */}
+            {checkAnswers.correctAnswers === 5 && <Confetti />}
             {
                 startQuiz.status 
                 ?
